@@ -14,12 +14,4 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  getDataFromOneDrive(): void {
-
-  }
-
-  getDataFromGoogleDrive(): void {
-
-  }
 }
