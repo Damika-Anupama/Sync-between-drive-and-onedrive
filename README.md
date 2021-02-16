@@ -1,6 +1,6 @@
 # Myapp
 
-![preview](src/assets/Screenshot from 2021-02-08 09-37-57.png)
+![preview](src/assets/preview.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
 

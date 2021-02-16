@@ -7,7 +7,9 @@ import { MainComponent } from './view/main/main.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import {AuthorizationService} from './service/authorization.service';
-import {MyInterceptor} from './myInterceptor';
+import {GoogleInterceptor} from './interceptor/googleInterceptor';
+import { OneDriveComponent } from './view/one-drive/one-drive.component';
+import { GoogleDriveComponent } from './view/google-drive/google-drive.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -16,6 +18,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   declarations: [
     AppComponent,
     MainComponent,
+    OneDriveComponent,
+    GoogleDriveComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +29,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   ],
   providers: [
     AuthorizationService,
-    {provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: GoogleInterceptor, multi: true},
     {provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG}
   ],
   bootstrap: [AppComponent]
