@@ -20,11 +20,11 @@ export class GoogleInterceptor implements HttpInterceptor {
       // If the token is invalid or expired
       if (err.status === 401) {
         window.location.replace(
-          'https://accounts.google.com/o/oauth2/v2/auth?client_id=379593086792-b5etgvv88ngrvbq8c521ic1qgv9n2s5i.apps.googleusercontent.com&response_type=code&scope=https://www.googleapis.com/auth/drive.file&state=damiboy&redirect_uri=http://localhost:8081'
-          + environment.redirectUrl);
+          'https://accounts.google.com/o/oauth2/v2/auth?client_id=379593086792-b5etgvv88ngrvbq8c521ic1qgv9n2s5i.apps.googleusercontent.com&response_type=token&scope=https://www.googleapis.com/auth/drive.readonly&state=damiboy&redirect_uri=' + environment.redirectUrl);
       }
       throw (err);
     }));
   }
+
 
 }

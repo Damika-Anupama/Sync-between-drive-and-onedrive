@@ -9,7 +9,7 @@ import {catchError} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
 
 @Injectable()
-export class GoogleInterceptor implements HttpInterceptor {
+export class MicrosoftInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const accessToken = sessionStorage.getItem('access_token');
@@ -20,7 +20,7 @@ export class GoogleInterceptor implements HttpInterceptor {
       // If the token is invalid or expired
       if (err.status === 401) {
         window.location.replace(
-          'https://accounts.google.com/o/oauth2/v2/auth?client_id=379593086792-b5etgvv88ngrvbq8c521ic1qgv9n2s5i.apps.googleusercontent.com&response_type=code&scope=https://www.googleapis.com/auth/drive.file&state=damiboy&redirect_uri=http://localhost:8081'
+          'https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=35501892-52c7-43d5-a59b-d6d61ff8d3ca&response_type=token&scope=api://35501892-52c7-43d5-a59b-d6d61ff8d3ca/Files.Read.All&state=damiboy&redirect_uri='
           + environment.redirectUrl);
       }
       throw (err);
