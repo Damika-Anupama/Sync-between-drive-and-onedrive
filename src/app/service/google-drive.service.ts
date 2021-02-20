@@ -42,12 +42,12 @@ export class GoogleDriveService {
 
 interface IResp1 {
   files: Array<{
-    id: string, size: number, owner: string
+    id: string, size: number, owners: string
   }>;
 }
 
 export interface IResp2 {
-  owner: string;
+  owners: string;
   size: number;
 }
 

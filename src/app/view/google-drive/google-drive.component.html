@@ -1,13 +1,13 @@
 
   <div class="col-lg-3 col-6 bar">
     <!-- small box -->
-    <div class="small-box bg-success" (click)="getDataFromGoogleDrive()" *ngIf=okToken>
+    <div class="small-box bg-success" (click)="getDataFromGoogleDrive()">
       <div class="inner">
         <h3>Import</h3>
         <p class="drive">Google Drive</p>
       </div>
     </div>
-    <div class="small-box bg-success" (click)="logout()" >
+    <div class="small-box bg-success" (click)="logout()">
       <div class="inner">
         <h3>Logout</h3>
         <p class="drive">Google Drive</p>
@@ -28,19 +28,14 @@
         </thead>
         <tbody>
         <tr>
-          <td>Win 95+</td>
-          <td> 4</td>
-          <td>X</td>
+          <td>djfs</td>
+          <td>dfdf</td>
+          <td>dsdfsf</td>
         </tr>
-        <tr>
-          <td>Win 95+</td>
-          <td>5</td>
-          <td>C</td>
-        </tr>
-        <tr>
-          <td>Win 95+</td>
-          <td>5.5</td>
-          <td>A</td>
+        <tr *ngFor="let row of tableRows">
+          <td>{{row.userAddress}}</td>
+          <td>{{row.fileCount}}</td>
+          <td>{{row.size}}</td>
         </tr>
         </tbody>
       </table>

@@ -8,10 +8,9 @@ import {GoogleDriveService, IResp2} from '../../service/google-drive.service';
   styleUrls: ['./google-drive.component.scss']
 })
 export class GoogleDriveComponent implements OnInit {
-  sum  = 0;
+  sum = 0;
   files: IResp2[] = [];
-  okToken = sessionStorage.getItem('access_token');
-  tableRows: { userAddress: string; fileCount: number; size: number }[] = [];
+  tableRows: IResp3[] = [];
   loaderWrapperVisibility = true;
 
   constructor(private route: ActivatedRoute, private router: Router, private drive: GoogleDriveService) {
@@ -24,7 +23,6 @@ export class GoogleDriveComponent implements OnInit {
 // @ts-ignore
     const fragment: string = this.route.fragment.value;
     let accessToken = sessionStorage.getItem('access_token');
-    // console.log(fragment);
     if (fragment != null) {
       try {
         // @ts-ignore
@@ -42,35 +40,41 @@ export class GoogleDriveComponent implements OnInit {
           file.size = parseFloat((file.size / (1000 * 1000)).toFixed(4));
           // @ts-ignore
           file.owners = file.owners[0].emailAddress;
-          this.files.push(file);
+          this.tableRows.push(new IResp3(file.owners, file.size, 1));
           this.sum += parseFloat((file.size / 1000).toFixed(2));
-          // this.sum = parseFloat((this.sum / 1000).toFixed(2));
         }
       }, error => console.log(error),
       () => this.loaderWrapperVisibility = false);
-
-    /*todo: stop multiplying the sum 😛*/
-
-    this.getOwners();
-  }
-
-  private getOwners(): void {
-    this.files.forEach(f => {
-      console.log(f);
-      // let num = true;
-      // this.tableRows.forEach(x => {
-      //   if ((x.ownerAddress === f.tableRows[0].emailAddress)) {
-      //     !num;
-      //   }
-      //   if (num) {
-      //     this.owners.push(f);
-      //   }
-      // });
+    this.tableRows.forEach(f => {
+      alert('sidbfdkfasf');
     });
+    // @ts-ignore
+    for (let i = 0; i < this.tableRows - 1; i++) {
+      // @ts-ignore
+      for (let j = 1; j < this.tableRows - 2; j++) {
+
+        // if (j() === i[0]) {
+        // }
+      }
+    }
+    console.log(this.tableRows);
   }
 
   logout(): void {
     sessionStorage.removeItem('access_token');
     this.router.navigate(['/main']);
+  }
+}
+
+
+class IResp3 {
+  public userAddress: string;
+  public size: number;
+  public fileCount: number;
+
+  constructor(userAddress: string, size: number, fileCount: number) {
+    this.userAddress = userAddress;
+    this.size = size;
+    this.fileCount = fileCount;
   }
 }

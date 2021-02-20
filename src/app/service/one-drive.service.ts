@@ -7,9 +7,9 @@ import {Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class GoogleDriveService {
+export class OneDriveService {
 
-  readonly BASE_URL: string = 'https://graph.microsoft.com/v1.0';
+  readonly BASE_URL: string = 'https://graph.microsoft.com/v1.0/me/drive/root';
 
   constructor(private http: HttpClient) {
   }
@@ -21,7 +21,7 @@ export class GoogleDriveService {
       try {
         // this.http.get<IResp1>(this.BASE_URL + 'mimeType!=folder').subscribe(resp1 => {
         let index = 0;
-        this.http.get<IResp1>(this.BASE_URL + '?fields=files(owners(emailAddress),size)').subscribe(resp2 => {
+        this.http.get<IResp1>(this.BASE_URL).subscribe(resp2 => {
           resp2.files.forEach((file) => {
             observer.next(file);
             if (index === (resp2.files.length - 1)) {
